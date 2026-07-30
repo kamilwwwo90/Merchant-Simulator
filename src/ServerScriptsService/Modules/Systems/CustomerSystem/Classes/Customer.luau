@@ -1,3 +1,4 @@
+local HttpService = game:GetService("HttpService")
 local ServerScriptService = game:GetService("ServerScriptService")
 local CustomerStates = require(ServerScriptService.Modules.Systems.CustomerSystem.Data.CustomerStates)
 
@@ -13,6 +14,7 @@ function Customer.New(Data)
 
         PreferredItems = {Data.PreferredItems},
 
+        Id = HttpService:GenerateGUID(false),
         State = CustomerStates.Wandering
     }, Customer)
 
