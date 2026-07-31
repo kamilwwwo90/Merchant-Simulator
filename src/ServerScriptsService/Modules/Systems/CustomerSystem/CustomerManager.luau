@@ -12,4 +12,8 @@ function Manager.DeleteNPC(npcData)
     Manager.ActiveNPCs[npcData.Id] = nil
 end
 
+function Manager.GetNpcs()
+    return Manager.ActiveNPCs
+end
+
 return Manager
