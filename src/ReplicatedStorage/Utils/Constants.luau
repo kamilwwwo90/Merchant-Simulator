@@ -1,4 +1,6 @@
 return {
+    CustomerSpawnTimer = 10,
+
     CurrencyTypes = {
         Gold = "Gold",
         Rubies = "Rubies",
