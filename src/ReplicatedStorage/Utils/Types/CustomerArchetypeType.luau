@@ -7,7 +7,7 @@ export type Archetype = {
     QualityPreference: {Base: number, Variation: number},
     Patience: {Base: number, Variation: number},
 
-    Preferrences: {[string]: {Base: number, Variation: number}},
+    Preferences: {[string]: {Name: string, Base: number, Variation: number}},
 
     SpawnChance: number,
 }

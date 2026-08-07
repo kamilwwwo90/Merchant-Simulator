@@ -9,7 +9,7 @@ local DefaultData = require(ReplicatedStorage.Data.DefaultData)
 
 local Key = "PLAYER_DATA_V1"
 
-if RunService.IsStudio() then
+if RunService:IsStudio() then
     Key = "Test_PLAYER_DATA_V1"
 end
 

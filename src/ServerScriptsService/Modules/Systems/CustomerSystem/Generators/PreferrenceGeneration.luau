@@ -9,12 +9,13 @@ type CustomerArchetype = CustomerArchetypeType.Archetype
 function Generator.RandomPreferrences(archetype: CustomerArchetype)
     local Preferrences = {}
 
-    for _, preferrence in archetype.Preferrences do
-        local Base = preferrence.Base
-        local Variation = preferrence.Variation
-
+    for _, preference in archetype.Preferences do
+        local Name = preference.Name
+        local Base = preference.Base
+        local Variation = preference.Variation
+        
         local Num = Base + RandomVariation(Variation)
-        Preferrences[preferrence] = Num
+        Preferrences[Name] = Num
     end
     
     return Preferrences

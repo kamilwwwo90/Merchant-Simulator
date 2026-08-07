@@ -1,4 +1,6 @@
-local function WeightedRandom(Weights)
+local WeightedRandom = {}
+
+function WeightedRandom.Roll(Weights)
     local TotalWeight = 0
 
     for _, weight in Weights do
@@ -16,4 +18,4 @@ local function WeightedRandom(Weights)
     end
 end
 
-return WeightedRandom()
+return WeightedRandom

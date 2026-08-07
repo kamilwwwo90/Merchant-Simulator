@@ -12,7 +12,7 @@ function Customer.New(Data)
 
         Patience = Data.Patience,
 
-        PreferredItems = {Data.PreferredItems},
+        PreferredItems = Data.PreferredItems,
 
         Id = HttpService:GenerateGUID(false),
         State = CustomerStates.Wandering

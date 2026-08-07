@@ -11,7 +11,7 @@ type CustomerArchetype = CustomerArchetypeType.Archetype
 
 function Generator.RandomArchetype(): CustomerArchetype?
     local Weights = Constants.CustomerArchetypeWeights
-    local RandomArchetype: string = WeightedRandom(Weights)
+    local RandomArchetype: string = WeightedRandom.Roll(Weights)
 
     for _, Archetype in CustomerArchetypes do
         if Archetype.Name == RandomArchetype then

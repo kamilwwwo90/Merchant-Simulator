@@ -24,8 +24,9 @@ local Archetypes: {[string]: CustomerArchetype} = {
             Variation = 0.4,
         },
 
-        Preferrences = {
+        Preferences = {
             [ItemCategories.Resource] = {
+                Name = "Resource",
                 Base = 1.2,
                 Variation = .2
             },
@@ -54,18 +55,21 @@ local Archetypes: {[string]: CustomerArchetype} = {
             Variation = 0.4,
         },
 
-        Preferrences = {
+        Preferences = {
             [ItemCategories.Armor] = {
+                Name = "Armor",
                 Base = 1.4,
                 Variation = .5
             },
 
             [ItemCategories.Weapon] = {
+                Name = "Weapon",
                 Base = 1.5,
                 Variation = .3
             },
 
             [ItemCategories.Potion] = {
+                Name = "Potion",
                 Base = 1.1,
                 Variation = .3
             },
@@ -93,18 +97,21 @@ local Archetypes: {[string]: CustomerArchetype} = {
             Variation = 0.3,
         },
 
-        Preferrences = {
+        Preferences = {
             [ItemCategories.Luxury] = {
+                Name = "Luxury",
                 Base = 1.5,
                 Variation = .3
             },
 
             [ItemCategories.Weapon] = {
+                Name = "Weapon",
                 Base = 1.2,
                 Variation = .3
             },
 
             [ItemCategories.Armor] = {
+                Name = "Armor",
                 Base = 1.2,
                 Variation = .3
             },

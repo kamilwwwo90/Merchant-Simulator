@@ -14,9 +14,9 @@ function Generator.RandomCustomer()
     local Archetype: CustomerArchetype? = ArchetypeGenerator.RandomArchetype()
     if not Archetype then error("Archetype is nil") end
 
-    local GoldRange = Archetype.GoldRange
+    local GoldRange: {number} = Archetype.GoldRange
 
-    local Gold = math.random(GoldRange)
+    local Gold = math.random(table.unpack(GoldRange))
     local Personality = PersonalityGenerator.RandomPersonality(Archetype)
     local Preferrences = PreferrenceGeneration.RandomPreferrences(Archetype)
 
