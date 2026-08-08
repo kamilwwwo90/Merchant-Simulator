@@ -1,21 +1,17 @@
 local HttpService = game:GetService("HttpService")
-local ServerScriptService = game:GetService("ServerScriptService")
-local CustomerStates = require(ServerScriptService.Modules.Systems.CustomerSystem.Data.CustomerStates)
 
 local Customer = {}
 
 function Customer.New(Data)
     local self = setmetatable({
+        Model = Data.Model,
 
         Gold = Data.Gold,
         Personality = Data.Personality,
-
         Patience = Data.Patience,
-
         PreferredItems = Data.PreferredItems,
 
-        Id = HttpService:GenerateGUID(false),
-        State = CustomerStates.Wandering
+        Id = HttpService:GenerateGUID(false)
     }, Customer)
 
     return self

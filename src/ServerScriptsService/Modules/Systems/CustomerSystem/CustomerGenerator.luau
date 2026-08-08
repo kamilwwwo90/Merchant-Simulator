@@ -6,6 +6,8 @@ local ArchetypeGenerator = require(ServerScriptService.Modules.Systems.CustomerS
 local PersonalityGenerator = require(ServerScriptService.Modules.Systems.CustomerSystem.Generators.PersonalityGenerator)
 local PreferrenceGeneration = require(ServerScriptService.Modules.Systems.CustomerSystem.Generators.PreferrenceGeneration)
 
+local CustomerModels = ReplicatedStorage.CustomerModels
+
 local Generator = {}
 
 type CustomerArchetype = CustomerArchetypeType.Archetype
@@ -21,6 +23,8 @@ function Generator.RandomCustomer()
     local Preferrences = PreferrenceGeneration.RandomPreferrences(Archetype)
 
     local Data = {
+        Model = CustomerModels[Archetype.Name]:Clone(),
+        
         --Gold
         Gold = Gold,
 

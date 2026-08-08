@@ -1,29 +1,32 @@
+local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local RunService = game:GetService("RunService")
 local ServerScriptService = game:GetService("ServerScriptService")
-local RandomNPC = require(ServerScriptService.Modules.Systems.CustomerSystem.Utils.RandomNPC)
-local CustomerManager = require(script.Parent.CustomerManager)
-local Constants = require(ReplicatedStorage.Utils.Constants)
+local CustomerStateMachine = require(script.Parent.CustomerStateMachine)
+local WorldPositions = require(ServerScriptService.Modules.Systems.CustomerSystem.Data.WorldPositions)
+local RandomCustomer = require(ServerScriptService.Modules.Systems.CustomerSystem.Utils.RandomCustomer)
+local CustomerType = require(ReplicatedStorage.Utils.Types.CustomerType)
 
-local SpawningLoopTask
+local Events = ReplicatedStorage.Events
+
+local CustomerDespawned = Events.NpcDespawnedEvent
+local ShopOpened = Events.ShopOpenedEvent
+
+type CustomerType = CustomerType.Customer
 
 local Service = {}
 
+local function SpawnCustomer()
+    local RandomCustomer: CustomerType = RandomCustomer()
 
+    local Model = RandomCustomer.Model
+    Model.Parent = workspace.Npcs
+    Model:PivotTo(CFrame.new(WorldPositions.NpcSpawnPoint))
 
-RunService.Heartbeat:Connect(function()
-    if not SpawningLoopTask then
-        SpawningLoopTask = task.spawn(function()
-            local RandomNPC = RandomNPC()
+    local Statemachine = CustomerStateMachine.New(RandomCustomer)
+end
 
-            CustomerManager.AddNPC(RandomNPC)
-
-            print(RandomNPC)
-
-            task.wait(Constants.CustomerSpawnTimer)
-            SpawningLoopTask = nil
-        end)
-    end
-end)
+ShopOpened.OnServerEvent:Connect(SpawnCustomer)
+CustomerDespawned.Event:Connect(SpawnCustomer)
+Players.PlayerAdded:Connect(SpawnCustomer)
 
 return Service
